@@ -1,6 +1,8 @@
 
 
 Способности
+#include <zaxvat.h> 
+
 #include <Servo.h> 
 Servo servo1
 Servo servo2
@@ -8,35 +10,27 @@ int trigPin = 11;  // Trigger
 int echoPin = 12;  // Echo
 long duration, cm, inches;
 
-void setup() {
-   servo1.attach(11); 
-}
+int sY=0;
+
+
+
 //    поднять корпус вверх
-void setup corp_up(){
-
-  
+void setup corp_up(int a){
+ for (b=sY; b<a; b++){ servo2.write(sY+1); sY++ }
 }
-    
-  
+ void setup corp_down(){
+  for (b=sY; b>a; b--){ servo2.write(sY-1);  sY--  }}
 }
 
 
-   // опустить корпус
-void setup corp_down(){}
+void setup corpWp(){servo1.write(180)}
 
-
-    //повернуть корпус на лево
-void setup corpW(){servo1.write(180)}
-
-void setup corpW(){
+void setup corpWl(){
   servo1.write(90);
   }
 
   //повернуть корпус на право
-void setup corpL(){ servo1.Lrite(90)}
-void setup corpL(){servo1.Lrite(180) }
-
-void setup zaxvat(){}
+void setup(){}
 digitalWrite(trigPin, LOW);
     delayMicroseconds(5);
     digitalWrite(trigPin, HIGH);
@@ -46,9 +40,14 @@ digitalWrite(trigPin, LOW);
     
     pinMode(echoPin, INPUT);
     duration = pulseIn(echoPin, HIGH);
+      servo2.attach(9)
+     servo2.attach(11); 
+     servo1.attach(9); 
+  servo1.write(90);
+}
 
-   
-    cm = (duration/2) / 29.1;
+void zahvat(){
+  cm = (duration/2) / 29.1;
     inches = (duration/2) / 74;
     Serial.print(inches);
     Serial.print("in, ");
@@ -57,12 +56,7 @@ digitalWrite(trigPin, LOW);
     Serial.println();
     delay(250);
 }
-
-
   
-  // put your setup code here, to run once:
-
-}
 
 void loop() {
   // put your main code here, to run repeatedly:
